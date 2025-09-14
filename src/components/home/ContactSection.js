@@ -90,31 +90,32 @@ export default function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ y: -5, scale: 1.02 }}
-              className="group"
+              // Hover hanya aktif di md ke atas
+              whileHover={{ y: 0, scale: 1 }}
+              className="group md:hover:-translate-y-1 md:hover:scale-105 transition-transform"
             >
-              <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-200/50 group-hover:border-blue-300/50 text-center relative overflow-hidden">
+              <div className="bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-xl transition-all duration-500 border border-slate-200/50 group-hover:border-blue-300/50 text-center relative overflow-hidden max-w-full">
                 {/* Background Decoration */}
                 <div
-                  className={`absolute -top-10 -right-10 w-24 h-24 ${method.bgColor} rounded-full opacity-30 group-hover:opacity-50 transition-opacity`}
+                  className={`absolute -top-10 -right-10 w-20 h-20 sm:w-24 sm:h-24 ${method.bgColor} rounded-full opacity-20 sm:opacity-30 group-hover:opacity-50 transition-opacity`}
                 />
 
                 {/* Icon */}
                 <div
-                  className={`w-16 h-16 bg-gradient-to-br ${method.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10`}
+                  className={`w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br ${method.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300 relative z-10`}
                 >
-                  <method.icon className="w-8 h-8 text-white" />
+                  <method.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                 </div>
 
-                <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
                   {method.title}
                 </h3>
 
-                <p className="text-slate-600 mb-4 leading-relaxed">
+                <p className="text-slate-600 mb-4 leading-relaxed text-sm sm:text-base">
                   {method.description}
                 </p>
 
-                <div className="text-lg font-semibold text-blue-600 mb-6">
+                <div className="text-base sm:text-lg font-semibold text-blue-600 mb-6 break-words">
                   {method.value}
                 </div>
 
@@ -136,11 +137,6 @@ export default function ContactSection() {
                     {method.buttonText}
                   </a>
                 </Button>
-
-                {/* Hover Effect */}
-                <div
-                  className={`absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r ${method.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-b-3xl`}
-                />
               </div>
             </motion.div>
           ))}
@@ -220,8 +216,8 @@ export default function ContactSection() {
 
           {/* Map */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="relative"
